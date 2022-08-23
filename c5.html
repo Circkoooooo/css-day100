@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>c5</title>
+		<style>
+			body,
+			html {
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #42a7a1;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			.container {
+				width: 400px;
+				height: 300px;
+				background-color: #fff;
+				border-radius: 8px;
+				box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
+				overflow: hidden;
+			}
+			.header {
+				height: 80px;
+				background-color: #f1ba64;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				color: #fff;
+				padding: 0 20px;
+				font-weight: 100;
+				font-size: 14px;
+			}
+			.header .left_block .title {
+				font-weight: bold;
+				font-size: 14px;
+			}
+			.header .right_block {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-end;
+			}
+			.header .right_block .money {
+				font-weight: bold;
+			}
+			.chart .legend {
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				height: 40px;
+				padding-right: 20px;
+				font-size: 10px;
+				color: rgba(0, 0, 0, 0.5);
+			}
+			.legend .param {
+				height: 20px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin: 0 10px;
+			}
+			.legend .param .color_block {
+				width: 10px;
+				height: 2px;
+				margin-right: 10px;
+			}
+			.color_block.color_block_1 {
+				background-color: #fa7373;
+			}
+			.color_block.color_block_2 {
+				background-color: #7ba2ff;
+			}
+			.chart .data {
+				height: 120px;
+				padding: 0 20px;
+				position: relative;
+			}
+			.data .line-1,
+			.line-2,
+			.line-3 {
+				width: 100%;
+				height: 1px;
+				background-color: rgba(0, 0, 0, 0.1);
+			}
+			.line-1 {
+				transform: translateY(0px);
+			}
+			.line-2 {
+				transform: translateY(60px);
+			}
+			.line-3 {
+				transform: translateY(120px);
+			}
+			svg.red {
+				position: absolute;
+				width: 360px;
+				height: 120px;
+			}
+			svg.blue {
+				position: absolute;
+				width: 360px;
+				height: 120px;
+			}
+
+			.chart .xaxis {
+				width: 100%;
+				height: 60px;
+				display: flex;
+				color: rgba(0, 0, 0, 0.4);
+				user-select: none;
+				font-size: 10px;
+				justify-content: space-around;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<div class="left_block">
+					<div class="title">WEEKLY REPORT</div>
+					<div class="time">01. Feb - 07. Feb</div>
+				</div>
+				<div class="right_block">
+					<div class="classification">Revenue</div>
+					<div class="money">$ 3621.79</div>
+				</div>
+			</div>
+			<div class="chart">
+				<div class="legend">
+					<div class="param">
+						<div class="color_block color_block_1"></div>
+						<div class="detail">Views</div>
+					</div>
+					<div class="param">
+						<div class="color_block color_block_2"></div>
+						<div class="detail">Purchases</div>
+					</div>
+				</div>
+				<div class="data">
+					<div class="line-1"></div>
+					<div class="line-2"></div>
+					<div class="line-3"></div>
+					<svg class="red">
+						<g>
+							<polyline points="10,10 60,40 120,50 180,60 240,45 300,40 350,50"
+      stroke="#fa7373" stroke-width="3" fill="none"> 
+						</g>
+					</svg>
+					<svg class="blue">
+						<g>
+							<polyline points="10,94 60,79 120,98 180,84 240,95 300,107 350,100"
+			stroke="#7ba2ff" stroke-width="3" fill="none"> 
+						</g>
+					</svg>
+				</div>
+				<div class="xaxis">
+					<span>MON</span>
+					<span>TUE</span>
+					<span>WED</span>
+					<span>THU</span>
+					<span>FRI</span>
+					<span>SAT</span>
+					<span>SUN</span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
