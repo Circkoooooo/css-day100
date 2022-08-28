@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+	<meta name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+	<title>c7</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body,
+		html {
+			height: 100%;
+			background-color: #264057;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		.container {
+			width: 340px;
+			height: 300px;
+			background-color: #fff;
+			position: relative;
+			border-radius: 4px;
+		}
+
+		.outer {
+			border-radius: 4px;
+			overflow: hidden;
+			position: absolute;
+			z-index: 1;
+		}
+
+		.outer .header {
+			height: 60px;
+			background-color: #5f98cd;
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			position: relative;
+		}
+
+		.header .menu {
+			width: 30px;
+			height: 30px;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			flex-direction: column;
+			opacity: 0.6;
+			cursor: pointer;
+			transition: all ease-in-out 0.3s;
+		}
+
+		.menu .top {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.top_circle,
+		.block {
+			border-radius: 4px;
+			background-color: #b2daff;
+		}
+
+		.menu .top .top_block {
+			width: 22px;
+			height: 4px;
+		}
+
+		.menu .top .top_circle {
+			width: 6px;
+			height: 6px;
+			margin-left: 2px;
+		}
+
+		.menu .bottom_block {
+			margin-top: 4px;
+			width: 30px;
+			height: 4px;
+		}
+
+		.menu:hover {
+			opacity: 1;
+		}
+
+		.title {
+			font-weight: bold;
+			font-size: 16px;
+			color: #fff;
+		}
+
+		.search_btn {
+			width: 10px;
+			height: 14px;
+			border: 1px solid #88b9e6;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			opacity: 0.8;
+			cursor: pointer;
+			transition: all ease-in-out 0.3s;
+		}
+
+		.search_btn:hover {
+			opacity: 1;
+		}
+
+		.search_btn::after {
+			content: 'F002';
+			width: 100%;
+			height: 100%;
+			word-wrap: break-word;
+			font-weight: bold;
+			letter-spacing: 1px;
+			text-align: center;
+			color: #88b9e6;
+			font-size: 4px;
+		}
+
+		.search_input {
+			position: absolute;
+			width: 240px;
+			left: 20px;
+			border-radius: 30px;
+			height: 34px;
+			background-color: #fff;
+			border: 1px solid #fff;
+			padding: 0 10px;
+			outline: none;
+			opacity: 0;
+			pointer-events: none;
+			transform: translateX(30px);
+			transition: all ease-in-out 0.3s;
+			font-size: 12px;
+		}
+
+		.active {
+			pointer-events: all;
+			opacity: 1;
+			transform: translateX(0);
+		}
+
+		.content {
+			width: 100%;
+			height: 240px;
+			position: relative;
+		}
+
+		.content .content_block {
+			height: 80px;
+			color: rgba(0, 0, 0, 0.5);
+			display: flex;
+			flex-direction: column;
+			padding: 20px;
+			padding-left: 80px;
+		}
+
+		.content .border_block {
+			height: 100%;
+			width: 4px;
+			background-color: #ebebeb;
+			position: absolute;
+			left: 40px;
+			top: 0;
+		}
+
+		.content_block .time {
+			font-size: 14px;
+		}
+
+		.content .content_block .border_circle {
+			width: 12px;
+			height: 12px;
+			position: absolute;
+			border: 2px solid #669dcf;
+			background-color: #fff;
+			left: 36px;
+			border-radius: 50%;
+
+		}
+
+		.border_circle::after {
+			position: absolute;
+			content: "";
+			width: 12px;
+			height: 12px;
+			border: 2px solid #fff;
+			left: -3px;
+			top: -3px;
+		}
+
+		.card {
+			width: 100px;
+			height: 300px;
+			position: absolute;
+			left: -40px;
+			top: 0;
+			z-index: -1;
+			background-color: #fff;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="outer">
+			<div class="header">
+				<div class="menu">
+					<div class="top">
+						<div class="top_block block"></div>
+						<div class="top_circle"></div>
+					</div>
+					<div class="bottom_block block"></div>
+				</div>
+				<div class="title">Notifications</div>
+				<input class="search_input"
+						placeholder="Search..."
+						id="input"></input>
+				<div class="search_btn"
+						onclick="changeInputActive()"></div>
+			</div>
+			<div class="content">
+				<div class="border_block"></div>
+				<div class="content_block">
+					<div class="border_circle"></div>
+					<span class="time">9:24 AM</span>
+					<span class="content">John Walker posted a photo on your wall.</span>
+				</div>
+				<div class="content_block">
+					<div class="border_circle"></div>
+					<span class="time">8:19 AM</span>
+					<span class="content">Alice Parker commented your last post.</span>
+				</div>
+				<div class="content_block">
+					<div class="border_circle"></div>
+					<span class="time">8:19 AM</span>
+					<span class="content">Luke Wayne added you as friend.</span>
+				</div>
+			</div>
+		</div>
+		<div class="card">
+
+		</div>
+	</div>
+	<script>
+		let input = null;
+		onload = () => {
+			input = document.getElementById("input")
+		}
+
+		const changeInputActive = () => {
+			const cList = input.classList;
+			if (cList.contains("active")) {
+				cList.remove("active")
+			} else {
+				cList.add("active")
+			}
+		}
+	</script>
+</body>
+
+</html>
